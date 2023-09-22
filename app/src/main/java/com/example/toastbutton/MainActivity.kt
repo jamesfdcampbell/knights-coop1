@@ -21,6 +21,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.example.toastbutton.ui.theme.ToastButtonTheme
 
 class MainActivity : ComponentActivity() {
@@ -28,41 +29,45 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             ToastButtonTheme {
-                // A surface container using the 'background' color from the theme
-                Box(modifier = Modifier
-                    .fillMaxSize()
-                    .background(Color(0xFF272727)),
-                )
-                {
-                    Image(
-                        painter = painterResource(id = R.drawable.martin_latal_9iv7pk8devo_unsplash),
-                        contentDescription = null,
-                        contentScale = ContentScale.FillBounds,
-                        modifier = Modifier
-                            .fillMaxSize()
-                            .scale(1.0f, 1.0f)
-                            .alpha(0.6f)
-                    )
-
-                    KnightsButton()
-
-                    Box(
-                        modifier = Modifier
-                            .fillMaxSize()
-                            .padding(bottom = 250.dp),
-                        contentAlignment = Alignment.Center,
-                    ) {
-                        Image(
-                            painter = painterResource(id = R.drawable.knights_of_ni),
-                            contentDescription = "The Knights of Ni",
-                            modifier = Modifier
-                                .fillMaxWidth()
-                                .padding(20.dp),
-                            contentScale = ContentScale.FillWidth
-                        )
-                    }
-                }
+                AppContent()
             }
+        }
+    }
+}
+
+@Composable
+fun AppContent() {
+    Box(modifier = Modifier
+        .fillMaxSize()
+        .background(Color(0xFF272727)),
+    )
+    {
+        Image(
+            painter = painterResource(id = R.drawable.martin_latal_9iv7pk8devo_unsplash),
+            contentDescription = null,
+            contentScale = ContentScale.FillBounds,
+            modifier = Modifier
+                .fillMaxSize()
+                .scale(1.0f, 1.0f)
+                .alpha(0.6f)
+        )
+
+        KnightsButton()
+
+        Box(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(bottom = 250.dp),
+            contentAlignment = Alignment.Center,
+        ) {
+            Image(
+                painter = painterResource(id = R.drawable.knights_of_ni),
+                contentDescription = "The Knights of Ni",
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(20.dp),
+                contentScale = ContentScale.FillWidth
+            )
         }
     }
 }
@@ -81,12 +86,13 @@ fun KnightsButton() {
                 Toast.makeText(context, "NI!", Toast.LENGTH_SHORT).show()
             },
             modifier = Modifier
-                .padding(16.dp)
+                .padding(20.dp)
                 .padding(bottom = 120.dp),
             colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF1D6487)
             )
         ) {
-            Text(text = "We are the knights who say...")
+            Text(text = "We are the knights who say...",
+                fontSize = 20.sp)
         }
     }
 }
@@ -95,39 +101,6 @@ fun KnightsButton() {
 @Composable
 fun KnightsPreview() {
     ToastButtonTheme {
-        // A surface container using the 'background' color from the theme
-        Box(modifier = Modifier
-            .fillMaxSize()
-            .background(Color(0xFF272727)),
-        )
-        {
-            Image(
-                painter = painterResource(id = R.drawable.martin_latal_9iv7pk8devo_unsplash),
-                contentDescription = null,
-                contentScale = ContentScale.FillBounds,
-                modifier = Modifier
-                    .fillMaxSize()
-                    .scale(1.0f, 1.0f)
-                    .alpha(0.6f)
-            )
-
-            KnightsButton()
-
-            Box(
-                modifier = Modifier
-                    .fillMaxSize()
-                    .padding(bottom = 250.dp),
-                contentAlignment = Alignment.Center,
-            ) {
-                Image(
-                    painter = painterResource(id = R.drawable.knights_of_ni),
-                    contentDescription = "The Knights of Ni",
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(20.dp),
-                    contentScale = ContentScale.FillWidth
-                )
-            }
-        }
+        AppContent()
     }
 }
