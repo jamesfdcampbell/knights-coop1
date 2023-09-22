@@ -6,15 +6,20 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.alpha
-import androidx.compose.ui.draw.scale
+import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
@@ -22,6 +27,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.compose.ui.zIndex
 import com.example.toastbutton.ui.theme.ToastButtonTheme
 
 class MainActivity : ComponentActivity() {
@@ -39,33 +45,22 @@ class MainActivity : ComponentActivity() {
 fun AppContent() {
     Box(modifier = Modifier
         .fillMaxSize()
-        .background(Color(0xFF272727)),
+        .background(color = Color(0xFFF7B3FC)),
     )
     {
-        Image(
-            painter = painterResource(id = R.drawable.martin_latal_9iv7pk8devo_unsplash),
-            contentDescription = null,
-            contentScale = ContentScale.FillBounds,
-            modifier = Modifier
-                .fillMaxSize()
-                .scale(1.0f, 1.0f)
-                .alpha(0.6f)
-        )
-
-        KnightsButton()
+        ButterButton()
 
         Box(
             modifier = Modifier
-                .fillMaxSize()
-                .padding(bottom = 250.dp),
+                .fillMaxSize(),
             contentAlignment = Alignment.Center,
         ) {
             Image(
-                painter = painterResource(id = R.drawable.knights_of_ni),
-                contentDescription = "The Knights of Ni",
+                painter = painterResource(id = R.drawable.bread),
+                contentDescription = "bread",
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(20.dp),
+                    .zIndex(0f),
                 contentScale = ContentScale.FillWidth
             )
         }
@@ -73,33 +68,41 @@ fun AppContent() {
 }
 
 @Composable
-fun KnightsButton() {
+fun ButterButton() {
     val context = LocalContext.current
     Column (
-        modifier = Modifier.fillMaxSize(),
-        verticalArrangement = Arrangement.Bottom,
+        modifier = Modifier
+            .fillMaxSize()
+            .zIndex(1f),
+        verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Button(
             onClick = {
                 // triggers the toast to appear when tapping the button
-                Toast.makeText(context, "NI!", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, "Your toast is buttered.", Toast.LENGTH_SHORT).show()
             },
             modifier = Modifier
                 .padding(20.dp)
-                .padding(bottom = 120.dp),
-            colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF1D6487)
+                .shadow(20.dp, shape = CircleShape) // Add a shadow with a 4dp elevation
+                .background(Color(0xFFFFEBAD)), // Set the background color
+            colors = ButtonDefaults.buttonColors(
+                containerColor = Color(0xFFFFEBAD)
             )
         ) {
-            Text(text = "We are the knights who say...",
-                fontSize = 20.sp)
+            Text(
+                text = "BUTTER",
+                fontSize = 20.sp,
+                color = Color.Black
+            )
         }
+
     }
 }
 
 @Preview(showBackground = true, showSystemUi = true)
 @Composable
-fun KnightsPreview() {
+fun BreadPreview() {
     ToastButtonTheme {
         AppContent()
     }
