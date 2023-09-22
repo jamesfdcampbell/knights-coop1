@@ -1,6 +1,6 @@
 # Knights of Ni
 
-## Co-Op 1: Creating and Customizing a Toast
+## Co-op 1: Creating and Customizing a Toast
 
 Image Credits:
 - Knights of Ni: https://www.deviantart.com/jonasscharf/art/Ni-324094118
