@@ -45,7 +45,7 @@ class MainActivity : ComponentActivity() {
 fun AppContent() {
     Box(modifier = Modifier
         .fillMaxSize()
-        .background(color = Color(0xFFF7B3FC)),
+        .background(color = Color(0xFFF6BBFA)),
     )
     {
         ButterButton()
