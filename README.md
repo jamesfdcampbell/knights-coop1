@@ -2,6 +2,7 @@
 
 ## Co-op 1: Creating and Customizing a Toast
 
+### Part 2: A Toasty Surprise
+
 Image Credits:
-- Knights of Ni: https://www.deviantart.com/jonasscharf/art/Ni-324094118
-- Forest: https://unsplash.com/photos/9IV7Pk8DEvo
+- Toast: https://boulangeriestmethode.com/en/our-products/les-grains-st-methode
