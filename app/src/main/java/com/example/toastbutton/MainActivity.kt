@@ -80,7 +80,7 @@ fun ButterButton() {
         Button(
             onClick = {
                 // triggers the toast to appear when tapping the button
-                Toast.makeText(context, "Your toast is buttered.", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, "Your toast has been buttered.", Toast.LENGTH_LONG).show()
             },
             modifier = Modifier
                 .padding(20.dp)
