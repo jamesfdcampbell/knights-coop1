@@ -1,6 +1,7 @@
 package com.example.toastbutton
 
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -29,9 +30,28 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.zIndex
 import com.example.toastbutton.ui.theme.ToastButtonTheme
+import com.google.android.gms.tasks.OnCompleteListener
+import com.google.firebase.messaging.Constants.TAG
+import com.google.firebase.messaging.FirebaseMessaging
+
 
 class MainActivity : ComponentActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
+        FirebaseMessaging.getInstance().token.addOnCompleteListener(OnCompleteListener { task ->
+            if (!task.isSuccessful) {
+                Log.w(TAG, "Fetching FCM registration token failed", task.exception)
+                return@OnCompleteListener
+            }
+
+            // Get new FCM registration token
+            val token = task.result
+
+            // Log and toast
+            val msg = getString(R.string.msg_token_fmt, token)
+            Log.d(TAG, msg)
+            Toast.makeText(baseContext, msg, Toast.LENGTH_SHORT).show()
+        })
         super.onCreate(savedInstanceState)
         setContent {
             ToastButtonTheme {
@@ -40,6 +60,8 @@ class MainActivity : ComponentActivity() {
         }
     }
 }
+
+
 
 @Composable
 fun AppContent() {
